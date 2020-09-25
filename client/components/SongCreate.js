@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import { hashHistory, Link } from 'react-router'
 
 const SongCreate = (props) => {
   const [songTitle, setSongTitle] = useState('')
@@ -13,16 +14,18 @@ const SongCreate = (props) => {
       variables: {
         title: songTitle
       }
+    }).then(() => {
+      hashHistory.push('/')
     })
 
   }
   return (
     <div>
+      <Link to='/'>Back</Link>
       <h3>Create a New Song</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Song Title:</label>
         <input type="text" value={songTitle} onChange={e => setSongTitle(e.target.value)}/>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import { Link } from 'react-router'
 
 const SongList = (props) => {
   const { loading, songs } = props.data
@@ -10,9 +11,12 @@ const SongList = (props) => {
     return <div>Loading...</div>
   }
   return (
-    <ul className='collection'>
-      { renderList() }
-    </ul>
+    <div>
+      <ul className='collection'>
+        { renderList() }
+      </ul>
+      <Link className="btn-floating btn-large red right" to='songs/new'><i className="material-icons">add</i></Link>
+    </div>
   )
 }
 
