@@ -8,7 +8,7 @@ import SongDelete from './SongDelete'
 
 const SongList = (props) => {
   const { loading, songs } = props.data
-  const renderList = () => songs.map(({title, id}) => (<li key={id} className='collection-item'>{title} <SongDelete id={id}/></li>))
+  const renderList = () => songs.map(({title, id}) => (<li key={id} className='collection-item'><Link to={`/songs/${id}`}>{title}</Link> <SongDelete id={id} /></li>))
 
   if(loading){
     return <div>Loading...</div>
