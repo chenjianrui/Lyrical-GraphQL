@@ -3,8 +3,10 @@ import { graphql } from 'react-apollo'
 import { Link } from 'react-router'
 
 import query from '../queries/fetchSong'
+import LyricalCreate from './LyricalCreate'
+import LyricalList from './LyricalList'
 
-const SongDetail = ({ data }) => {
+const SongDetail = ({ data, params }) => {
   const { loading, song } = data
 
   if(loading){
@@ -16,6 +18,8 @@ const SongDetail = ({ data }) => {
       <h3>
         {song.title}
       </h3>
+      <LyricalList lyrics={song.lyrics}/>
+      <LyricalCreate songId={params.id}/>
     </div>
   )
 }

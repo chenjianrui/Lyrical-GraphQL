@@ -11,7 +11,9 @@ import SongCreate from './components/SongCreate'
 import SongDetail from './components/SongDetail'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
+  // 這個讓你的 mutation 結果更新與 query 相應的 id
+  dataIdFromObject: o => o.id
 })
 
 const Root = () => {
