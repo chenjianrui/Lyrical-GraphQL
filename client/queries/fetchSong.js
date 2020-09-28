@@ -9,6 +9,7 @@ const query = gql`
       lyrics {
         id
         content
+        likes
       }
     }
   }
